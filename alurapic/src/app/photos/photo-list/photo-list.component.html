@@ -1,0 +1,5 @@
+<div class="container">
+    <ap-filter (onType)="filter = $event" [filter]="filter"></ap-filter>
+    <ap-photos [photos]="photos | filterByDescription: filter"></ap-photos>
+    <ap-load-button (click)="buscarMais()" [hasMore]="hasMore"></ap-load-button>
+</div>

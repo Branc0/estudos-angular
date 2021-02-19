@@ -1,0 +1,4 @@
+<button class="mx-auto btn btn-primary w-50 d-block mb-2" *ngIf="hasMore; else noResults">Carregar Mais</button>
+<ng-template #noResults>
+    <p class="mb-2 text-muted text-center">Não Há mais resultados disponiveis</p>
+</ng-template>
