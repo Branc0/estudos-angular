@@ -45,7 +45,7 @@ describe('Authservice', () => {
       req.method === 'POST');
 
     // simula uma requisição no back-end, e retorna um body, e informações http
-    // adicionais 
+    // adicionais
     request.flush(fakeBody, {
       headers: { 'x-access-token': 'tokenTest' }
     });
