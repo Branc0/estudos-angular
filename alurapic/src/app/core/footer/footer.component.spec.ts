@@ -8,6 +8,7 @@ describe('FooterComponent', () => {
     // criamos a variavél que irá receber o componente no escopo geral
     // para que ela seja acessada dentro dos testes
     let component: FooterComponent;
+    let userService: UserService;
 
     // utilizamos dos beforeEach, porque o processo de fixture e criação de componente 
     // demora, então pra não atrasar os testes fazemos ele de forma assincrona
@@ -27,13 +28,7 @@ describe('FooterComponent', () => {
 
     beforeEach(() => {
         // Pega uma instância de userService
-        const userService = TestBed.get(UserService);
-        // cria o duble para o método getUser do userService
-        spyOn(userService, 'getUser').and.returnValue(of({
-            email: 'teste@gmail.com',
-            name: 'Tester',
-            id: 1
-        }));
+        userService = TestBed.get(UserService);
 
         // faz junção do template e controller
         const fixture = TestBed.createComponent(FooterComponent);
@@ -46,5 +41,16 @@ describe('FooterComponent', () => {
     // smokeTest
     it('must be instantiated', () => {
         expect(component).toBeTruthy();
+    });
+
+    it('must initialized', () => {
+        expect(component.ngOnInit()).toBeFalsy();
+        // cria o duble para o método getUser do userService
+        const spy = spyOn(userService, 'getUser').and.returnValue(of({
+            email: 'teste@gmail.com',
+            name: 'Tester',
+            id: 1
+        }));
+        expect(component.user$).toBeTruthy();
     });
 });
