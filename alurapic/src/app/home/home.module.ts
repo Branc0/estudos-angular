@@ -15,7 +15,7 @@ import { SignupService } from './signup/signup.service';
         HomeComponent,
         SignInComponent,
         SignUpComponent
-     ],
+    ],
     imports: [
         CommonModule,
         HttpClientModule,
@@ -23,9 +23,6 @@ import { SignupService } from './signup/signup.service';
         VMessageModule,
         RouterModule,
         HomeRoutingModule,
-     ],
-     providers: [
-         SignupService
-     ]
+    ],
 })
-export class HomeModule { }
+export class HomeModule {}

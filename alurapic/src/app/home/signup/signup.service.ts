@@ -4,14 +4,18 @@ import { NewUser } from './new-user';
 
 const API = 'http://localhost:3000';
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+})
+
 export class SignupService {
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) {}
 
     checkUserName(userName: string) {
         return this.http.get(`${API}/user/exists/${userName}`);
     }
 
     signUp(newUser: NewUser) {
-        return this.http.post(API + '/user/signup', newUser);    }
+        return this.http.post(API + '/user/signup', newUser);
+    }
 }
