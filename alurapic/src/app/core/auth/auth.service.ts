@@ -15,15 +15,13 @@ export class AuthService {
   constructor(
     private httpClient: HttpClient,
     private userService: UserService
-  ) { }
+  ) {}
 
   authenticate(userName: string, password: string): Observable<any> {
     return this.httpClient
       .post<any>(`${API}/user/login`, { userName, password }, { observe: 'response' })
-      .pipe(tap(data => {
-        this.userService.
-        setToken(data.headers.get('x-access-token'));
-      }
+      .pipe(tap(data =>
+        this.userService.setToken(data.headers.get('x-access-token'))
       ));
   }
 }
