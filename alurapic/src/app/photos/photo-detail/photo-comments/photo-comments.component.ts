@@ -16,9 +16,9 @@ export class PhotoCommentsComponent implements OnInit {
     commentForm: FormGroup;
 
     constructor(
-            private photoService: PhotoService,
-            private formBuilder: FormBuilder
-        ) { }
+        private photoService: PhotoService,
+        private formBuilder: FormBuilder
+    ) {}
 
     ngOnInit(): void {
         this.comments$ = this.photoService.getComments(this.photoId);
@@ -31,7 +31,7 @@ export class PhotoCommentsComponent implements OnInit {
         const comment = this.commentForm.get('comment').value;
 
         this.comments$ = this.photoService.addComments(this.photoId, comment)
-        .pipe(switchMap( () => this.photoService.getComments(this.photoId)))
-        .pipe( tap( () => this.commentForm.reset()));
+            .pipe(switchMap(() => this.photoService.getComments(this.photoId)))
+            .pipe(tap(() => this.commentForm.reset()));
     }
 }

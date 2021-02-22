@@ -9,7 +9,7 @@ import { SignUpComponent } from './signup.component';
 import { SignupService } from './signup.service';
 import { UserNotTakenValidatorService } from './user-not-taken.validator.service';
 
-describe('', () => {
+describe('When user ', () => {
     let component: SignUpComponent;
     let router: Router;
     let signupService: SignupService;
@@ -24,7 +24,7 @@ describe('', () => {
                 ReactiveFormsModule,
                 RouterTestingModule.withRoutes([])
             ]
-        }).compileComponents;
+        }).compileComponents();
     }));
 
     beforeEach(() => {
@@ -41,6 +41,7 @@ describe('', () => {
 
     it('must sign up', () => {
         const navigateSpy = spyOn(router, 'navigate');
+        const spy = spyOn(signupService, 'signUp').and.returnValue(of(null));
         component.signupForm.get('fullName').setValue('Nome Teste');
         component.signupForm.get('userName').setValue('testerUser');
         component.signupForm.get('email').setValue('teste@gmail.com');
@@ -54,9 +55,8 @@ describe('', () => {
             password: '1234'
         };
 
-        // const spy = spyOn(signUpService, 'signUp').and.returnValue(of(null));
-        // expect(component.signupForm.getRawValue()).toEqual(newUser);
-        // expect(spy).toHaveBeenCalled();
-        // expect(navigateSpy).toHaveBeenCalledWith(['']);
+        expect(component.signupForm.getRawValue()).toEqual(newUser);
+        expect(spy).toHaveBeenCalled();
+        expect(navigateSpy).toHaveBeenCalledWith(['']);
     });
 });
