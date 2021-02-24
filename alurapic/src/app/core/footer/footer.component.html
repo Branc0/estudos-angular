@@ -1,4 +1,7 @@
-<footer class="mt-5" *ngIf="(user$ | async) as user">
+<footer
+    class="mt-5"
+    *ngIf="(user$ | async) as user"
+>
     <div class="fixed-bottom bg-white p-1">
         <div class="container">
             <div class="row text-center">
@@ -8,7 +11,7 @@
                     </a>
                 </div>
                 <div class="col-6">
-                    <a [routerLink]="['p', 'add']">
+                    <a [routerLink]="['/new-photo']">
                         <i class="fa fa-plus-circle fa-2x"></i>
                     </a>
                 </div>

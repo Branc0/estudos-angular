@@ -1,4 +1,4 @@
-import { Route } from '@angular/compiler/src/core';
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ export class PhotoFormComponent implements OnInit {
     constructor(
         private formBuilder: FormBuilder,
         private photoService: PhotoService,
-        private router: Router) { }
+        private router: Router) {}
 
     ngOnInit(): void {
         this.photoForm = this.formBuilder.group({
