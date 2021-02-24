@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from '@angular/core';
 import { Alert, AlertType } from './alert';
 import { AlertService } from './alert.service';
 
@@ -7,17 +7,19 @@ import { AlertService } from './alert.service';
     templateUrl: './alert.component.html'
 })
 export class AlertComponent {
-
+    // timeout padrão da notificação
     @Input() timeout = 3000;
     alerts: Alert[] = [];
 
     constructor(private alertService: AlertService) {
         this.alertService.getAlert().subscribe(
             alert => {
+                // se o alerta vir nulo é por causa da função clear, portanto
                 if (!alert) {
                     this.alerts = [];
                     return;
                 }
+                // se tiver algo no alerts, inserir no vetor push
                 this.alerts.push(alert);
                 setTimeout(() => this.removeAlert(alert), this.timeout);
             }
@@ -25,7 +27,7 @@ export class AlertComponent {
     }
 
     removeAlert(alertToRemove: Alert) {
-        this.alerts = this.alerts.filter(alert => alert != alertToRemove);
+        this.alerts = this.alerts.filter(alert => alert !== alertToRemove);
     }
 
     getAlertClass(alert: Alert) {
