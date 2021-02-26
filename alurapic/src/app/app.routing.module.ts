@@ -15,13 +15,21 @@ const routes: Routes = [
     },
     {
         path: 'home',
-        loadChildren: './home/home.module#HomeModule'
+        loadChildren: './home/home.module#HomeModule',
+        data: {
+            title: 'Integra',
+            favicon: 'favicon-agua.ico'
+        }
     },
     {
         path: 'fotos/:userName',
         component: PhotoListComponent,
         resolve: {
             photos: PhotoResolver
+        },
+        data: {
+            title: 'Alurapic - :userName',
+            favicon: 'favicon-esgoto.ico'
         }
     },
     {
@@ -31,7 +39,10 @@ const routes: Routes = [
     {
         path: 'new-photo',
         component: PhotoFormComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+            title: 'Alurapic - Upload Photo'
+        }
     }
     // {
     //     path: '**',
